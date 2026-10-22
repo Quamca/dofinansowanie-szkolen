@@ -6,6 +6,6 @@ var USTAWIENIA = {
   adres: 'ul. Szeroki Łan 17/2, 41-214 Sosnowiec',          // adres z CEIDG
   mail: 'ginalskiigor@gmail.com',           // kontakt w stopce
   telefon: '+48 518 077 414',        // kontakt w stopce, np. '+48 600 000 000'
-  formularzUrl: '',   // adres wdrożonego Google Apps Script (apps-script/INSTRUKCJA.md)
+  formularzUrl: 'https://script.google.com/macros/s/AKfycbyGcFha0TDHl_NrpJVEqHh0UuCEQMUXwITNWnniVmrx9iyJp0HZA6zitltdJGOB_HTTSQ/exec',   // adres wdrożonego Google Apps Script (apps-script/INSTRUKCJA.md)
   goatcounter: '',    // np. 'https://NAZWA.goatcounter.com/count' — statystyki bez ciasteczek
 };
