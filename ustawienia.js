@@ -7,5 +7,5 @@ var USTAWIENIA = {
   mail: 'ginalskiigor@gmail.com',           // kontakt w stopce
   telefon: '+48 518 077 414',        // kontakt w stopce, np. '+48 600 000 000'
   formularzUrl: 'https://script.google.com/macros/s/AKfycbyGcFha0TDHl_NrpJVEqHh0UuCEQMUXwITNWnniVmrx9iyJp0HZA6zitltdJGOB_HTTSQ/exec',   // adres wdrożonego Google Apps Script (apps-script/INSTRUKCJA.md)
-  goatcounter: '',    // np. 'https://NAZWA.goatcounter.com/count' — statystyki bez ciasteczek
+  cloudflareToken: 'b930b5e0385e4047a154588beadc6618',  // Cloudflare Web Analytics — statystyki bez ciasteczek
 };

@@ -135,9 +135,10 @@
     if (u.telefon) czesci.push('<a href="tel:' + u.telefon.replace(/\s/g, '') + '">' + u.telefon + '</a>');
     $('#stopka-kontakt').innerHTML = czesci.join(' · ');
     $('#data-sprawdzenia').textContent = BAZA.data_sprawdzenia;
-    if (u.goatcounter) {
+    if (u.cloudflareToken) {
       var s = document.createElement('script');
-      s.async = true; s.src = 'https://gc.zgo.at/count.js'; s.dataset.goatcounter = u.goatcounter;
+      s.defer = true; s.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+      s.dataset.cfBeacon = JSON.stringify({ token: u.cloudflareToken });
       document.body.appendChild(s);
     }
   }
