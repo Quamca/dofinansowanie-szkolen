@@ -1,0 +1,118 @@
+:root {
+  --tlo: #f5f3ee;
+  --karta: #ffffff;
+  --tekst: #1d2329;
+  --cichy: #5d6670;
+  --linia: #e2ded5;
+  --akcent: #1f5f4a;
+  --akcent-jasny: #e3efe9;
+  --ostrzezenie: #8a5a00;
+  --cien: 0 1px 2px rgba(29, 35, 41, .06), 0 4px 16px rgba(29, 35, 41, .05);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --tlo: #15191c;
+    --karta: #1e2428;
+    --tekst: #e7e9ea;
+    --cichy: #9aa4ad;
+    --linia: #2f373d;
+    --akcent: #6cc4a1;
+    --akcent-jasny: #1f3530;
+    --ostrzezenie: #e3b45c;
+    --cien: none;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--tlo);
+  color: var(--tekst);
+  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+a { color: var(--akcent); }
+h1, h2 { line-height: 1.2; letter-spacing: -.01em; }
+h1 { font-size: clamp(1.7rem, 4.5vw, 2.5rem); margin: .3em 0 .4em; }
+h2 { font-size: 1.25rem; margin: 0 0 .5em; }
+small { display: block; color: var(--cichy); font-size: .85rem; }
+.naglowek, main, .stopka { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+.naglowek { padding-top: 48px; padding-bottom: 8px; }
+.naglowek p:last-child { color: var(--cichy); max-width: 60ch; }
+.nad { text-transform: uppercase; font-size: .75rem; letter-spacing: .08em; color: var(--akcent); font-weight: 600; margin: 0; }
+.kolumna { display: grid; gap: 16px; }
+.karta {
+  background: var(--karta);
+  border: 1px solid var(--linia);
+  border-radius: 14px;
+  padding: 20px 22px;
+  box-shadow: var(--cien);
+  margin: 16px 0 0;
+  min-width: 0;
+}
+fieldset.karta { margin: 0; }
+legend { font-weight: 700; font-size: 1.15rem; padding: 0; float: left; width: 100%; margin-bottom: 8px; }
+legend + * { clear: both; }
+.nr {
+  display: inline-grid; place-items: center; width: 1.6em; height: 1.6em; margin-right: .5em;
+  border-radius: 50%; background: var(--akcent); color: var(--karta); font-size: .85rem;
+}
+.pytanie { font-weight: 600; margin: 18px 0 8px; }
+.przyciski { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.przyciski label {
+  border: 1px solid var(--linia); border-radius: 10px; padding: 10px; cursor: pointer; font-weight: 600;
+}
+.przyciski input { margin: 0 6px 0 0; accent-color: var(--akcent); }
+.przyciski label:has(input:checked) { border-color: var(--akcent); background: var(--akcent-jasny); }
+.premia {
+  display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: start;
+  padding: 10px 0; border-top: 1px solid var(--linia); cursor: pointer;
+}
+.premia input { margin-top: 4px; accent-color: var(--akcent); width: 18px; height: 18px; }
+.premia b { color: var(--akcent); white-space: nowrap; font-size: .9rem; padding-top: 2px; }
+.pole { display: block; font-weight: 600; margin: 4px 0 12px; }
+.pole input {
+  display: block; width: 100%; max-width: 260px; margin-top: 6px; padding: 10px 12px; font: inherit;
+  border: 1px solid var(--linia); border-radius: 8px; background: var(--tlo); color: var(--tekst);
+}
+.uczestnicy { list-style: none; padding: 0; margin: 0; }
+.uczestnicy li {
+  display: flex; flex-wrap: wrap; gap: 6px 18px; padding: 8px 0; border-top: 1px solid var(--linia);
+}
+.uczestnicy li span { min-width: 72px; color: var(--cichy); }
+.uczestnicy input { accent-color: var(--akcent); margin-right: 6px; }
+.wynik { border-color: var(--akcent); }
+.procent { font-size: clamp(2.4rem, 8vw, 3.4rem); font-weight: 800; color: var(--akcent); margin: 0; line-height: 1.1; }
+.procent small { display: inline; font-size: 1rem; font-weight: 500; }
+.kwoty { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 14px 0 6px; }
+.kwoty dt { font-size: .8rem; color: var(--cichy); }
+.kwoty dd { margin: 0; font-weight: 700; font-size: 1.1rem; font-variant-numeric: tabular-nums; }
+.uwagi { padding-left: 18px; color: var(--cichy); font-size: .92rem; margin: 10px 0 0; }
+.wiecej { margin-top: 16px; padding-top: 16px; border-top: 1px dashed var(--linia); }
+.wiecej ul { padding-left: 18px; }
+.wiecej b { color: var(--akcent); }
+.przycisk {
+  font: inherit; font-weight: 700; border: 0; border-radius: 10px; padding: 12px 18px; cursor: pointer;
+  background: var(--akcent); color: var(--karta);
+}
+.przycisk:hover { filter: brightness(1.08); }
+.nabory { list-style: none; padding: 0; margin: 0; }
+.nabory li {
+  display: grid; grid-template-columns: 170px 1fr; gap: 2px 14px; padding: 10px 0;
+  border-top: 1px solid var(--linia);
+}
+.termin { font-weight: 700; font-variant-numeric: tabular-nums; grid-row: span 2; }
+.pula { color: var(--cichy); font-size: .88rem; }
+.znacznik {
+  display: inline-block; font-size: .72rem; background: var(--akcent); color: var(--karta);
+  padding: 1px 6px; border-radius: 6px; vertical-align: middle;
+}
+.formularz { margin-top: 16px; }
+.ukryte { position: absolute; left: -9999px; }
+.drobne { font-size: .85rem; color: var(--cichy); }
+.status { font-weight: 600; color: var(--akcent); }
+.stopka { color: var(--cichy); font-size: .88rem; padding-top: 24px; padding-bottom: 48px; }
+@media (max-width: 560px) {
+  .karta { padding: 16px; }
+  .kwoty { grid-template-columns: 1fr 1fr; }
+  .nabory li { grid-template-columns: 1fr; }
+  .termin { grid-row: auto; }
+}

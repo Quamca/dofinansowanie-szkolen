@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kalkulator dofinansowania szkoleń — Śląsk 5.15</title>
+<meta name="description" content="Policz, ile dofinansowania z BUR dostanie Twoja firma na szkolenie w województwie śląskim (działanie 5.15, PSF dla MŚP) i sprawdź najbliższe nabory u operatorów.">
+<link rel="stylesheet" href="styl.css">
+</head>
+<body>
+<header class="naglowek">
+  <p class="nad">Województwo śląskie · działanie 5.15 · Baza Usług Rozwojowych</p>
+  <h1>Ile dofinansowania dostanie Twoja firma na szkolenie?</h1>
+  <p>Zaznacz, co pasuje do firmy, szkolenia i uczestników. Kalkulator liczy od razu, w Twojej
+    przeglądarce — niczego nie zapisuje ani nie wysyła.</p>
+</header>
+
+<main>
+<form id="kalkulator" class="kolumna" onsubmit="return false">
+  <fieldset class="karta">
+    <legend><span class="nr">1</span>Firma</legend>
+    <p class="pytanie">Wielkość firmy</p>
+    <div class="przyciski">
+      <label><input type="radio" name="wielkosc" value="mikro">Mikro<small>do 9 osób</small></label>
+      <label><input type="radio" name="wielkosc" value="mala" checked>Mała<small>do 49 osób</small></label>
+      <label><input type="radio" name="wielkosc" value="srednia">Średnia<small>do 249 osób</small></label>
+    </div>
+    <label class="premia"><input type="checkbox" name="firma" value="premia_branza_regionalna">
+      <span>Branża ważna dla regionu<small>według wykazu branż operatora (Program Rozwoju Technologii
+      WSL, rozdz. 2.3) — sprawdzamy po PKD</small></span><b data-premia="premia_branza_regionalna"></b></label>
+    <label class="premia"><input type="checkbox" name="firma" value="premia_obszar_wiejski">
+      <span>Siedziba albo oddział na obszarze wiejskim<small>według CEIDG lub KRS</small></span>
+      <b data-premia="premia_obszar_wiejski"></b></label>
+    <p class="pytanie">Czy firma przechodzi restrukturyzację, adaptację lub modernizację?</p>
+    <label class="premia"><input type="radio" name="restrukturyzacja" value="" checked>
+      <span>Nie</span><b></b></label>
+    <label class="premia"><input type="radio" name="restrukturyzacja" value="premia_restrukturyzacja_inna">
+      <span>Tak</span><b data-premia="premia_restrukturyzacja_inna"></b></label>
+    <label class="premia"><input type="radio" name="restrukturyzacja" value="premia_gornicza_restrukturyzacja">
+      <span>Tak, a firma jest z branży górniczej lub okołogórniczej</span>
+      <b data-premia="premia_gornicza_restrukturyzacja"></b></label>
+  </fieldset>
+
+  <fieldset class="karta">
+    <legend><span class="nr">2</span>Szkolenie</legend>
+    <label class="pole">Cena netto za jedną osobę (zł)
+      <input type="number" id="cena" min="0" step="0.01" value="3000" inputmode="decimal"></label>
+    <p class="pytanie">Szkolenie prowadzi do…</p>
+    <label class="premia"><input type="checkbox" name="usluga" value="premia_cyfrowe">
+      <span>kompetencji lub kwalifikacji cyfrowych</span><b data-premia="premia_cyfrowe"></b></label>
+    <label class="premia"><input type="checkbox" name="usluga" value="premia_zielone">
+      <span>zielonych kompetencji lub kwalifikacji<small>np. oszczędzanie energii, gospodarka
+      odpadami, ekoprojektowanie</small></span><b data-premia="premia_zielone"></b></label>
+    <label class="premia"><input type="checkbox" name="usluga" value="premia_kwalifikacja">
+      <span>kwalifikacji<small>z Zintegrowanego Rejestru Kwalifikacji albo walidacja i certyfikat
+      instytucji uprawnionej</small></span><b data-premia="premia_kwalifikacja"></b></label>
+  </fieldset>
+
+  <fieldset class="karta">
+    <legend><span class="nr">3</span>Uczestnicy</legend>
+    <label class="pole">Ile osób idzie na szkolenie?
+      <input type="number" id="liczba" min="1" max="50" value="1" inputmode="numeric"></label>
+    <p class="pytanie">Zaznacz osoby, których dotyczy premia
+      (<span data-premia="premia_55plus"></span> za każdą z nich)</p>
+    <ol id="uczestnicy" class="uczestnicy"></ol>
+  </fieldset>
+</form>
+
+<section id="wynik" class="karta wynik" aria-live="polite">
+  <p class="nad">Orientacyjny wynik</p>
+  <p class="procent"><span id="w-procent">50%</span> <small>dofinansowania netto</small></p>
+  <dl class="kwoty">
+    <div><dt>Dofinansowanie</dt><dd id="w-dofinansowanie"></dd></div>
+    <div><dt>Wkład firmy</dt><dd id="w-wklad"></dd></div>
+    <div><dt>Wartość netto</dt><dd id="w-wartosc"></dd></div>
+  </dl>
+  <ul id="w-uwagi" class="uwagi"></ul>
+  <div id="w-wiecej" class="wiecej" hidden>
+    <h2>Może da się więcej</h2>
+    <p>Tych premii jeszcze nie ma w wyniku. Część z nich zależy od tego, jak ułożony jest program
+      szkolenia — warto zapytać, zanim złożycie wniosek.</p>
+    <ul id="w-brakujace"></ul>
+    <button type="button" class="przycisk" data-pokaz-kontakt>Zapytaj, jak dołożyć premie</button>
+  </div>
+</section>
+
+<section id="nabory" class="karta">
+  <h2>Najbliższe nabory na szkolenia</h2>
+  <p>Wszystkich 8 operatorów ma takie same zasady i premie — różnią się terminem i pulą pieniędzy.
+    O kolejności na liście decydują punkty, nie godzina zgłoszenia.</p>
+  <ul id="lista-naborow" class="nabory"></ul>
+</section>
+
+<section id="kontakt" class="karta">
+  <h2>Chcesz, żebym to dla Was poprowadził?</h2>
+  <p>Zbieram dane, przygotowuję dokumenty pod operatora i pilnuję terminów — od wniosku do
+    rozliczenia.</p>
+  <button type="button" class="przycisk" data-pokaz-kontakt>Poproś o kontakt</button>
+  <form id="formularz" class="formularz" hidden>
+    <label class="pole">Imię<input name="imie" required autocomplete="given-name"></label>
+    <label class="pole">Stanowisko<input name="stanowisko" autocomplete="organization-title"></label>
+    <label class="pole">Telefon<input name="telefon" type="tel" autocomplete="tel"></label>
+    <label class="pole">E-mail<input name="mail" type="email" required autocomplete="email"></label>
+    <label class="ukryte" aria-hidden="true">Nie wypełniaj<input name="www" tabindex="-1" autocomplete="off"></label>
+    <p class="drobne">Razem z danymi wyślę wynik z kalkulatora (bez danych uczestników). Dane służą
+      tylko do odpowiedzi na zapytanie — szczegóły w <a href="polityka.html">polityce prywatności</a>.</p>
+    <button type="submit" class="przycisk">Wyślij</button>
+    <p id="formularz-status" class="status" role="status"></p>
+  </form>
+</section>
+</main>
+
+<footer class="stopka">
+  <p id="stopka-kontakt"></p>
+  <p>Wynik jest orientacyjny — wiąże regulamin operatora i ocena jego dokumentów. Kryteria
+    sprawdzone w regulaminach wszystkich 8 operatorów <span id="data-sprawdzenia"></span>.</p>
+  <p><a href="polityka.html">Polityka prywatności</a> · strona nie używa ciasteczek</p>
+</footer>
+
+<script src="ustawienia.js"></script>
+<script src="dane.js"></script>
+<script src="kalkulator.js"></script>
+<script src="strona.js"></script>
+</body>
+</html>

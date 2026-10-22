@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Polityka prywatności — kalkulator dofinansowania szkoleń</title>
+<link rel="stylesheet" href="styl.css">
+</head>
+<body>
+<header class="naglowek">
+  <p class="nad"><a href="index.html">← Kalkulator</a></p>
+  <h1>Polityka prywatności</h1>
+</header>
+<main>
+<section class="karta">
+  <h2>Kto przetwarza dane</h2>
+  <p>Administratorem danych jest <span data-u="firma"></span>, NIP <span data-u="nip"></span>,
+    <span data-u="adres"></span>. Kontakt w sprawie danych: <span data-u="mail"></span>.</p>
+
+  <h2>Kalkulator</h2>
+  <p>Kalkulator liczy w Twojej przeglądarce. To, co w nim zaznaczasz, nie jest nigdzie wysyłane
+    ani zapisywane.</p>
+
+  <h2>Formularz „Poproś o kontakt”</h2>
+  <p>Gdy wyślesz formularz, otrzymuję: imię, stanowisko, telefon, adres e-mail i wynik
+    z kalkulatora (bez danych uczestników szkolenia). Używam ich wyłącznie, żeby odpowiedzieć na
+    zapytanie i przedstawić ofertę — podstawą jest podjęcie działań na Twoje żądanie przed zawarciem
+    umowy (art. 6 ust. 1 lit. b RODO). Podanie danych jest dobrowolne, bez nich nie mogę się
+    odezwać.</p>
+  <p>Formularz przechodzi przez usługę Google Apps Script i trafia na moją skrzynkę Gmail — Google
+    przetwarza te dane w moim imieniu jako dostawca usług. Dane przechowuję do 12 miesięcy od
+    ostatniego kontaktu, a jeśli podejmiemy współpracę — przez czas jej trwania i rozliczeń.</p>
+
+  <h2>Statystyki i ciasteczka</h2>
+  <p>Strona nie używa ciasteczek. Liczę odwiedziny narzędziem GoatCounter, które nie zapisuje
+    niczego na Twoim urządzeniu i nie identyfikuje osób (zlicza wejścia, źródła i rodzaj
+    przeglądarki). Stronę udostępnia GitHub Pages — jak każdy serwer zapisuje techniczne logi
+    połączeń (m.in. adres IP) w celu bezpieczeństwa.</p>
+
+  <h2>Twoje prawa</h2>
+  <p>Możesz zażądać dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia
+    przetwarzania, przeniesienia oraz wnieść sprzeciw — wystarczy mail na adres powyżej. Masz też
+    prawo złożyć skargę do Prezesa Urzędu Ochrony Danych Osobowych (uodo.gov.pl).</p>
+  <p class="drobne">Ostatnia zmiana: 23.10.2026</p>
+</section>
+</main>
+<footer class="stopka"><p><a href="index.html">Wróć do kalkulatora</a></p></footer>
+<script src="ustawienia.js"></script>
+<script>
+  document.querySelectorAll('[data-u]').forEach(function (el) {
+    el.textContent = USTAWIENIA[el.dataset.u] || '[do uzupełnienia]';
+  });
+</script>
+</body>
+</html>
