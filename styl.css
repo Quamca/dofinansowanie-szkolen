@@ -109,10 +109,29 @@ legend + * { clear: both; }
 .ukryte { position: absolute; left: -9999px; }
 .drobne { font-size: .85rem; color: var(--cichy); }
 .status { font-weight: 600; color: var(--akcent); }
+.stopka a[href^="tel:"] { white-space: nowrap; }
+.pasek { display: none; }
 .stopka { color: var(--cichy); font-size: .88rem; padding-top: 24px; padding-bottom: 48px; }
 @media (max-width: 560px) {
   .karta { padding: 16px; }
   .kwoty { grid-template-columns: 1fr 1fr; }
   .nabory li { grid-template-columns: 1fr; }
   .termin { grid-row: auto; }
+  .uczestnicy label { padding: 6px 0; }
+  .uczestnicy input { width: 18px; height: 18px; vertical-align: -3px; }
+}
+@media (max-width: 760px) {
+  .pasek:not([hidden]) {
+    display: flex; align-items: baseline; gap: 10px; position: fixed; left: 8px; right: 8px; bottom: 8px;
+    padding: 12px 16px; border-radius: 12px; background: var(--akcent); color: var(--karta);
+    text-decoration: none; box-shadow: 0 4px 16px rgba(0, 0, 0, .2); z-index: 10;
+  }
+  .pasek b { font-size: 1.3rem; }
+  .pasek-strzalka { margin-left: auto; font-size: .85rem; white-space: nowrap; }
+  .stopka { padding-bottom: 88px; }
+}
+@media (max-width: 420px) {
+  .przyciski { grid-template-columns: 1fr; }
+  .przyciski label { display: flex; align-items: baseline; padding: 10px 12px; }
+  .przyciski small { display: inline; margin-left: auto; }
 }

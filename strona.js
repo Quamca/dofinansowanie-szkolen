@@ -60,6 +60,8 @@
     $('#w-dofinansowanie').textContent = zl.format(w.dofinansowanie);
     $('#w-wklad').textContent = zl.format(w.wkladWlasny);
     $('#w-wartosc').textContent = zl.format(w.wartosc);
+    $('#p-procent').textContent = $('#w-procent').textContent;
+    $('#p-kwota').textContent = zl.format(w.dofinansowanie) + ' dofinansowania';
 
     var uwagi = [];
     if (w.uczestnicy.some(function (u) { return u.procentBezLimitu > u.procent; })) {
@@ -143,6 +145,11 @@
     }
   }
 
+  // Pasek z wynikiem na dole ekranu, dopóki karta wyniku jest jeszcze niżej (telefon).
+  function pasek() {
+    $('#pasek').hidden = $('#wynik').getBoundingClientRect().top < window.innerHeight;
+  }
+
   $$('[data-premia]').forEach(function (el) { el.textContent = etykietaPremii(el.dataset.premia); });
   $$('[data-pokaz-kontakt]').forEach(function (b) {
     b.addEventListener('click', function () {
@@ -156,4 +163,7 @@
   pokazWynik();
   pokazNabory();
   stopka();
+  pasek();
+  window.addEventListener('scroll', pasek, { passive: true });
+  window.addEventListener('resize', pasek);
 })();
